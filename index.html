@@ -1,1089 +1,1196 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Nyx Pest Control — Massachusetts</title>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-      <style>
-         :root {
-         --red: #C0392B;
-         --red-soft: #D4574A;
-         --red-light: #F5E6E4;
-         --red-pale: #FDF2F1;
-         --cream: #FAF8F5;
-         --warm-white: #FFFFFF;
-         --charcoal: #2C2C2C;
-         --mid: #5C5C5C;
-         --light: #9A9A9A;
-         --border: #E8E2DA;
-         --shadow: rgba(192, 57, 43, 0.08);
-         }
-         * { margin: 0; padding: 0; box-sizing: border-box; }
-         html { scroll-behavior: smooth; }
-         body {
-         font-family: 'DM Sans', sans-serif;
-         background: var(--cream);
-         color: var(--charcoal);
-         overflow-x: hidden;
-         }
-         /* ── NAV ── */
-         nav {
-         position: fixed;
-         top: 0; left: 0; right: 0;
-         z-index: 100;
-         background: rgba(250, 248, 245, 0.92);
-         backdrop-filter: blur(14px);
-         border-bottom: 1px solid var(--border);
-         padding: 0 5%;
-         height: 68px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         }
-         .nav-logo {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         text-decoration: none;
-         }
-         .nav-logo-icon {
-         width: 36px;
-         height: 36px;
-         background: var(--red);
-         border-radius: 8px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-size: 18px;
-         }
-         .nav-logo-text {
-         font-family: 'Playfair Display', serif;
-         font-size: 1.25rem;
-         font-weight: 700;
-         color: var(--charcoal);
-         letter-spacing: -0.02em;
-         }
-         .nav-logo-text span { color: var(--red); }
-         .nav-links {
-         display: flex;
-         align-items: center;
-         gap: 32px;
-         list-style: none;
-         }
-         .nav-links a {
-         text-decoration: none;
-         font-size: 0.875rem;
-         font-weight: 500;
-         color: var(--mid);
-         transition: color 0.2s;
-         }
-         .nav-links a:hover { color: var(--red); }
-         .nav-cta {
-         background: var(--red);
-         color: white !important;
-         padding: 9px 20px;
-         border-radius: 8px;
-         font-weight: 600 !important;
-         transition: background 0.2s, transform 0.15s !important;
-         }
-         .nav-cta:hover {
-         background: var(--red-soft) !important;
-         transform: translateY(-1px);
-         color: white !important;
-         }
-         /* ── HERO ── */
-         .hero {
-         min-height: 100vh;
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         align-items: center;
-         padding: 100px 5% 60px;
-         position: relative;
-         overflow: hidden;
-         }
-         .hero::before {
-         content: '';
-         position: absolute;
-         top: -100px; right: -150px;
-         width: 600px; height: 600px;
-         background: radial-gradient(circle, var(--red-light) 0%, transparent 70%);
-         border-radius: 50%;
-         z-index: 0;
-         }
-         .hero::after {
-         content: '';
-         position: absolute;
-         bottom: -80px; left: -80px;
-         width: 400px; height: 400px;
-         background: radial-gradient(circle, #F0EDE8 0%, transparent 70%);
-         border-radius: 50%;
-         z-index: 0;
-         }
-         .hero-content {
-         position: relative;
-         z-index: 1;
-         animation: fadeUp 0.8s ease both;
-         }
-         .hero-badge {
-         display: inline-flex;
-         align-items: center;
-         gap: 7px;
-         background: var(--red-pale);
-         border: 1px solid var(--red-light);
-         color: var(--red);
-         font-size: 0.8rem;
-         font-weight: 600;
-         padding: 6px 14px;
-         border-radius: 100px;
-         margin-bottom: 24px;
-         letter-spacing: 0.04em;
-         text-transform: uppercase;
-         }
-         .hero-badge span { font-size: 0.9rem; }
-         h1 {
-         font-family: 'Playfair Display', serif;
-         font-size: clamp(2.4rem, 4vw, 3.6rem);
-         font-weight: 700;
-         line-height: 1.15;
-         letter-spacing: -0.02em;
-         color: var(--charcoal);
-         margin-bottom: 22px;
-         }
-         h1 em {
-         font-style: normal;
-         color: var(--red);
-         }
-         .hero-sub {
-         font-size: 1.05rem;
-         color: var(--mid);
-         line-height: 1.7;
-         max-width: 480px;
-         margin-bottom: 36px;
-         font-weight: 400;
-         }
-         .hero-actions {
-         display: flex;
-         gap: 14px;
-         align-items: center;
-         flex-wrap: wrap;
-         }
-         .btn-primary {
-         background: var(--red);
-         color: white;
-         padding: 14px 28px;
-         border-radius: 10px;
-         font-size: 0.95rem;
-         font-weight: 600;
-         text-decoration: none;
-         transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-         box-shadow: 0 4px 20px rgba(192, 57, 43, 0.28);
-         }
-         .btn-primary:hover {
-         background: var(--red-soft);
-         transform: translateY(-2px);
-         box-shadow: 0 8px 28px rgba(192, 57, 43, 0.32);
-         }
-         .btn-secondary {
-         color: var(--charcoal);
-         font-size: 0.95rem;
-         font-weight: 500;
-         text-decoration: none;
-         display: flex;
-         align-items: center;
-         gap: 6px;
-         transition: color 0.2s;
-         }
-         .btn-secondary:hover { color: var(--red); }
-         .btn-secondary .arrow { font-size: 1.2rem; }
-         .hero-trust {
-         display: flex;
-         align-items: center;
-         gap: 18px;
-         margin-top: 40px;
-         flex-wrap: wrap;
-         }
-         .trust-item {
-         display: flex;
-         align-items: center;
-         gap: 7px;
-         font-size: 0.82rem;
-         font-weight: 500;
-         color: var(--mid);
-         }
-         .trust-dot {
-         width: 7px; height: 7px;
-         background: var(--red);
-         border-radius: 50%;
-         flex-shrink: 0;
-         }
-         /* Hero illustration side */
-         .hero-visual {
-         position: relative;
-         z-index: 1;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         animation: fadeUp 0.8s 0.2s ease both;
-         }
-         .hero-card-cluster {
-         position: relative;
-         width: 380px;
-         height: 420px;
-         }
-         .hero-main-card {
-         position: absolute;
-         top: 40px; left: 20px;
-         width: 320px;
-         background: white;
-         border-radius: 20px;
-         padding: 28px;
-         box-shadow: 0 20px 60px rgba(0,0,0,0.09);
-         border: 1px solid var(--border);
-         }
-         .hmc-icon {
-         font-size: 2.4rem;
-         margin-bottom: 14px;
-         }
-         .hmc-title {
-         font-family: 'Playfair Display', serif;
-         font-size: 1.1rem;
-         font-weight: 700;
-         color: var(--charcoal);
-         margin-bottom: 6px;
-         }
-         .hmc-sub {
-         font-size: 0.82rem;
-         color: var(--light);
-         line-height: 1.5;
-         }
-         .hmc-stat {
-         margin-top: 18px;
-         display: flex;
-         gap: 16px;
-         }
-         .stat-pill {
-         background: var(--red-pale);
-         border: 1px solid var(--red-light);
-         border-radius: 8px;
-         padding: 8px 14px;
-         }
-         .stat-pill strong {
-         display: block;
-         font-size: 1.1rem;
-         font-weight: 700;
-         color: var(--red);
-         line-height: 1;
-         }
-         .stat-pill span {
-         font-size: 0.72rem;
-         color: var(--mid);
-         font-weight: 500;
-         text-transform: uppercase;
-         letter-spacing: 0.04em;
-         }
-         .float-chip {
-         position: absolute;
-         background: white;
-         border-radius: 12px;
-         padding: 10px 16px;
-         box-shadow: 0 8px 28px rgba(0,0,0,0.1);
-         border: 1px solid var(--border);
-         font-size: 0.82rem;
-         font-weight: 600;
-         color: var(--charcoal);
-         display: flex;
-         align-items: center;
-         gap: 8px;
-         white-space: nowrap;
-         animation: float 4s ease-in-out infinite;
-         }
-         .float-chip.chip-1 { top: 0; right: 0; animation-delay: 0s; }
-         .float-chip.chip-2 { bottom: 60px; right: 10px; animation-delay: 1.5s; }
-         .float-chip.chip-3 { bottom: 10px; left: 10px; animation-delay: 0.8s; }
-         .chip-dot { width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; }
-         /* ── SECTION COMMONS ── */
-         section { padding: 90px 5%; }
-         .section-label {
-         font-size: 0.75rem;
-         font-weight: 600;
-         letter-spacing: 0.1em;
-         text-transform: uppercase;
-         color: var(--red);
-         margin-bottom: 10px;
-         }
-         .section-title {
-         font-family: 'Playfair Display', serif;
-         font-size: clamp(1.9rem, 3vw, 2.6rem);
-         font-weight: 700;
-         letter-spacing: -0.02em;
-         color: var(--charcoal);
-         line-height: 1.2;
-         margin-bottom: 14px;
-         }
-         .section-sub {
-         font-size: 1rem;
-         color: var(--mid);
-         line-height: 1.7;
-         max-width: 520px;
-         }
-         .section-header { margin-bottom: 52px; }
-         /* ── WHY US ── */
-         .why {
-         background: white;
-         border-top: 1px solid var(--border);
-         border-bottom: 1px solid var(--border);
-         }
-         .why-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-         gap: 32px;
-         }
-         .why-card {
-         padding: 28px 24px;
-         border-radius: 14px;
-         border: 1px solid var(--border);
-         background: var(--cream);
-         transition: box-shadow 0.2s, transform 0.2s;
-         }
-         .why-card:hover {
-         box-shadow: 0 8px 32px var(--shadow);
-         transform: translateY(-3px);
-         }
-         .why-icon {
-         width: 44px; height: 44px;
-         background: var(--red-pale);
-         border-radius: 10px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-size: 1.3rem;
-         margin-bottom: 16px;
-         }
-         .why-card h3 {
-         font-family: 'Playfair Display', serif;
-         font-size: 1.05rem;
-         font-weight: 700;
-         color: var(--charcoal);
-         margin-bottom: 8px;
-         }
-         .why-card p {
-         font-size: 0.875rem;
-         color: var(--mid);
-         line-height: 1.6;
-         }
-         /* ── SERVICES ── */
-         .services-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 24px;
-         }
-         .service-card {
-         background: white;
-         border-radius: 16px;
-         padding: 30px;
-         border: 1px solid var(--border);
-         transition: box-shadow 0.25s, transform 0.25s;
-         position: relative;
-         overflow: hidden;
-         }
-         .service-card::before {
-         content: '';
-         position: absolute;
-         top: 0; left: 0; right: 0;
-         height: 3px;
-         background: var(--red);
-         transform: scaleX(0);
-         transform-origin: left;
-         transition: transform 0.3s ease;
-         }
-         .service-card:hover::before { transform: scaleX(1); }
-         .service-card:hover {
-         box-shadow: 0 12px 40px var(--shadow);
-         transform: translateY(-4px);
-         }
-         .sc-emoji { font-size: 2rem; margin-bottom: 16px; display: block; }
-         .sc-title {
-         font-family: 'Playfair Display', serif;
-         font-size: 1.15rem;
-         font-weight: 700;
-         color: var(--charcoal);
-         margin-bottom: 10px;
-         }
-         .sc-desc {
-         font-size: 0.875rem;
-         color: var(--mid);
-         line-height: 1.65;
-         margin-bottom: 18px;
-         }
-         .sc-tag {
-         display: inline-block;
-         background: var(--red-pale);
-         color: var(--red);
-         font-size: 0.72rem;
-         font-weight: 600;
-         text-transform: uppercase;
-         letter-spacing: 0.06em;
-         padding: 4px 10px;
-         border-radius: 100px;
-         border: 1px solid var(--red-light);
-         }
-         /* ── PROCESS ── */
-         .process { background: var(--charcoal); color: white; }
-         .process .section-label { color: var(--red-soft); }
-         .process .section-title { color: white; }
-         .process .section-sub { color: #AAA; }
-         .steps {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-         gap: 0;
-         position: relative;
-         }
-         .steps::before {
-         content: '';
-         position: absolute;
-         top: 28px; left: 80px; right: 80px;
-         height: 1px;
-         background: rgba(255,255,255,0.1);
-         z-index: 0;
-         }
-         .step {
-         text-align: center;
-         padding: 20px;
-         position: relative;
-         z-index: 1;
-         }
-         .step-num {
-         width: 56px; height: 56px;
-         border-radius: 50%;
-         background: var(--red);
-         color: white;
-         font-family: 'Playfair Display', serif;
-         font-size: 1.3rem;
-         font-weight: 700;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         margin: 0 auto 18px;
-         position: relative;
-         }
-         .step h3 {
-         font-family: 'Playfair Display', serif;
-         font-size: 1rem;
-         font-weight: 700;
-         color: white;
-         margin-bottom: 8px;
-         }
-         .step p {
-         font-size: 0.83rem;
-         color: #999;
-         line-height: 1.6;
-         }
-         /* ── TESTIMONIALS ── */
-         .testimonials { background: white; border-top: 1px solid var(--border); }
-         .testi-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-         gap: 24px;
-         }
-         .testi-card {
-         background: var(--cream);
-         border-radius: 16px;
-         padding: 28px;
-         border: 1px solid var(--border);
-         position: relative;
-         }
-         .testi-quote {
-         font-size: 2.5rem;
-         color: var(--red-light);
-         font-family: 'Playfair Display', serif;
-         line-height: 1;
-         margin-bottom: 4px;
-         }
-         .testi-text {
-         font-size: 0.9rem;
-         color: var(--mid);
-         line-height: 1.7;
-         margin-bottom: 20px;
-         font-style: italic;
-         }
-         .testi-author {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-         }
-         .testi-avatar {
-         width: 40px; height: 40px;
-         border-radius: 50%;
-         background: var(--red);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         font-weight: 700;
-         font-size: 0.9rem;
-         flex-shrink: 0;
-         }
-         .testi-name {
-         font-weight: 600;
-         font-size: 0.875rem;
-         color: var(--charcoal);
-         }
-         .testi-loc {
-         font-size: 0.78rem;
-         color: var(--light);
-         }
-         .stars { color: #F59E0B; font-size: 0.85rem; letter-spacing: 1px; }
-         /* ── SERVICE AREA ── */
-         .area { background: var(--red-pale); border-top: 1px solid var(--red-light); border-bottom: 1px solid var(--red-light); }
-         .area-inner {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 60px;
-         align-items: center;
-         }
-         .area-towns {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 10px;
-         margin-top: 24px;
-         }
-         .town-tag {
-         background: white;
-         border: 1px solid var(--red-light);
-         color: var(--charcoal);
-         font-size: 0.8rem;
-         font-weight: 500;
-         padding: 6px 14px;
-         border-radius: 100px;
-         transition: background 0.2s, color 0.2s;
-         }
-         .town-tag:hover {
-         background: var(--red);
-         color: white;
-         border-color: var(--red);
-         cursor: default;
-         }
-         .area-map {
-         background: white;
-         border-radius: 20px;
-         border: 1px solid var(--border);
-         padding: 24px 28px 18px;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         overflow: hidden;
-         box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-         }
-         .ma-map {
-         width: 100%;
-         height: auto;
-         }
-         .ma-map path {
-         fill: var(--red-light);
-         stroke: white;
-         stroke-width: 0.15;
-         transition: fill 0.2s;
-         cursor: pointer;
-         }
-         .ma-map path:hover { fill: var(--red-soft); }
-         .ma-map path.highlighted { fill: var(--red); }
-         .map-title {
-         font-family: 'Playfair Display', serif;
-         font-size: 0.95rem;
-         font-weight: 700;
-         color: var(--charcoal);
-         margin-bottom: 14px;
-         text-align: center;
-         }
-         .map-label {
-         font-size: 0.76rem;
-         color: var(--light);
-         margin-top: 12px;
-         text-align: center;
-         font-weight: 500;
-         }
-         /* ── CTA BANNER ── */
-         .cta-banner {
-         background: linear-gradient(135deg, var(--charcoal) 0%, #3D2C2C 100%);
-         padding: 80px 5%;
-         text-align: center;
-         position: relative;
-         overflow: hidden;
-         }
-         .cta-banner::before {
-         content: '';
-         position: absolute;
-         top: -100px; left: 50%;
-         transform: translateX(-50%);
-         width: 500px; height: 300px;
-         background: radial-gradient(ellipse, rgba(192,57,43,0.25) 0%, transparent 70%);
-         }
-         .cta-banner h2 {
-         font-family: 'Playfair Display', serif;
-         font-size: clamp(1.8rem, 3vw, 2.8rem);
-         font-weight: 700;
-         color: white;
-         margin-bottom: 14px;
-         position: relative;
-         z-index: 1;
-         }
-         .cta-banner p {
-         color: #AAA;
-         font-size: 1rem;
-         margin-bottom: 36px;
-         position: relative;
-         z-index: 1;
-         }
-         .cta-banner .btn-primary {
-         position: relative;
-         z-index: 1;
-         font-size: 1rem;
-         padding: 16px 36px;
-         }
-         .cta-contact {
-         position: relative;
-         z-index: 1;
-         margin-top: 28px;
-         color: #888;
-         font-size: 0.875rem;
-         }
-         .cta-contact a {
-         color: var(--red-soft);
-         text-decoration: none;
-         font-weight: 600;
-         }
-         /* ── FOOTER ── */
-         footer {
-         background: #1E1E1E;
-         padding: 50px 5% 30px;
-         color: #888;
-         }
-         .footer-grid {
-         display: grid;
-         grid-template-columns: 2fr 1fr 1fr;
-         gap: 48px;
-         margin-bottom: 40px;
-         }
-         .footer-brand .nav-logo-text { color: white; }
-         .footer-tagline {
-         font-size: 0.85rem;
-         color: #666;
-         line-height: 1.6;
-         margin-top: 12px;
-         max-width: 280px;
-         }
-         .footer-col h4 {
-         font-size: 0.8rem;
-         font-weight: 600;
-         text-transform: uppercase;
-         letter-spacing: 0.08em;
-         color: #AAA;
-         margin-bottom: 16px;
-         }
-         .footer-col a {
-         display: block;
-         color: #666;
-         text-decoration: none;
-         font-size: 0.875rem;
-         margin-bottom: 10px;
-         transition: color 0.2s;
-         }
-         .footer-col a:hover { color: var(--red-soft); }
-         .footer-bottom {
-         border-top: 1px solid #2E2E2E;
-         padding-top: 24px;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         font-size: 0.78rem;
-         color: #555;
-         flex-wrap: wrap;
-         gap: 10px;
-         }
-         .footer-license { color: var(--red-soft); font-weight: 600; }
-         /* ── ANIMATIONS ── */
-         @keyframes fadeUp {
-         from { opacity: 0; transform: translateY(28px); }
-         to { opacity: 1; transform: translateY(0); }
-         }
-         @keyframes float {
-         0%, 100% { transform: translateY(0); }
-         50% { transform: translateY(-8px); }
-         }
-         /* Scroll animations */
-         .reveal {
-         opacity: 0;
-         transform: translateY(24px);
-         transition: opacity 0.6s ease, transform 0.6s ease;
-         }
-         .reveal.visible {
-         opacity: 1;
-         transform: translateY(0);
-         }
-         /* ── RESPONSIVE ── */
-         @media (max-width: 900px) {
-         .hero {
-         grid-template-columns: 1fr;
-         text-align: center;
-         }
-         .hero-sub { margin: 0 auto 36px; }
-         .hero-actions { justify-content: center; }
-         .hero-trust { justify-content: center; }
-         .hero-visual { display: none; }
-         .area-inner { grid-template-columns: 1fr; }
-         .footer-grid { grid-template-columns: 1fr 1fr; }
-         }
-         @media (max-width: 600px) {
-         nav { padding: 0 4%; }
-         .nav-links { display: none; }
-         section { padding: 64px 5%; }
-         .steps::before { display: none; }
-         .footer-grid { grid-template-columns: 1fr; }
-         }
-      </style>
-   </head>
-   <body>
-      <!-- NAV -->
-      <nav>
-         <a href="#" class="nav-logo">
-            <div class="nav-logo-icon">🐜</div>
-            <span class="nav-logo-text">Nyx <span>Pest Control</span></span>
-         </a>
-         <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#process">How It Works</a></li>
-            <li><a href="#area">Service Area</a></li>
-            <li><a href="#contact" class="nav-cta">Free Inspection</a></li>
-         </ul>
-      </nav>
-      <!-- HERO -->
-      <section class="hero" id="home">
-         <div class="hero-content">
-            <div class="hero-badge"><span>📍</span> Serving Massachusetts Since 2015</div>
-            <h1>Stop <em>Overpaying</em><br>for Pest Control.</h1>
-            <p class="hero-sub">Most companies sell packages. We don’t.<br>Get targeted treatment based on your<br> actual issue— at a better price.</p>
-            <div class="hero-actions">
-               <a href="#contact" class="btn-primary">Get a Free Inspection</a>
-               <a href="tel:+15551234567" class="btn-secondary">📞 Call Us Today <span class="arrow">→</span></a>
-            </div>
-            <div class="hero-trust">
-               <div class="trust-item">
-                  <div class="trust-dot"></div>
-                  Experienced Local Technicians
-               </div>
-               <div class="trust-item">
-                  <div class="trust-dot"></div>
-                  100% Satisfaction Guarantee
-               </div>
-            </div>
-         </div>
-         <div class="hero-visual">
-            <div class="hero-card-cluster">
-               <div class="hero-main-card">
-                  <div class="hmc-icon">🏘️</div>
-                  <div class="hmc-title">Locally Owned & Operated</div>
-                  <div class="hmc-sub">No corporate markup—just fair, competitive rates.</div>
-                  <div class="hmc-stat">
-                     <div class="stat-pill">
-                        <strong>$0</strong>
-                        <span>Hidden Fees</span>	
-                     </div>
-                     <div class="stat-pill">
-                        <strong>$0</strong>
-                        <span>Contracts</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="float-chip chip-1">💵 Pay Only for What You Need</div>
-               <div class="float-chip chip-2">🎯 Targeted Treatments</div>
-               <div class="float-chip chip-3">📝 No Contracts</div>
-            </div>
-         </div>
-      </section>
-      <!-- WHY US -->
-      <section class="why" id="why">
-         <div class="section-header">
-            <div class="section-label">Why Choose Nyx</div>
-            <h2 class="section-title">Small Company, Big Commitment</h2>
-            <p class="section-sub">We're your neighbors, not a national franchise. When you call us, you talk to a real person who knows Massachusetts pest behaviors.</p>
-         </div>
-         <div class="why-grid">
-            <div class="why-card reveal">
-               <div class="why-icon">🏠</div>
-               <h3>Locally Owned</h3>
-               <p>We keep prices competitive by staying local and efficient. You pay for what’s needed—not what companies try to sell you.</p>
-            </div>
-            <div class="why-card reveal">
-               <div class="why-icon">⚡</div>
-               <h3>Fast Response</h3>
-               <p>We know pest problems can't wait. Same-day and next-day appointments available across our service area.</p>
-            </div>
-            <div class="why-card reveal">
-               <div class="why-icon">🌿</div>
-               <h3>Family-Safe Treatments</h3>
-               <p>We use EPA-approved, targeted treatments that are tough on pests but safe for your family and pets.</p>
-            </div>
-            <div class="why-card reveal">
-               <div class="why-icon">✅</div>
-               <h3>Guaranteed Results</h3>
-               <p>Not satisfied? We come back at no charge. Your peace of mind matters more than a quick job.</p>
-            </div>
-         </div>
-      </section>
-      <!-- SERVICES -->
-      <section id="services">
-         <div class="section-header">
-            <div class="section-label">What We Treat</div>
-            <h2 class="section-title">Comprehensive Pest Solutions</h2>
-            <p class="section-sub">From ants in your kitchen to mice in your walls — we've got you covered with targeted, proven treatments.</p>
-         </div>
-         <div class="services-grid">
-            <div class="service-card reveal">
-               <span class="sc-emoji">🐜</span>
-               <div class="sc-title">Ants & Roaches</div>
-               <p class="sc-desc">Targeted baiting and barrier treatments that eliminate colonies at the source — not just the surface.</p>
-               <span class="sc-tag">Interior & Exterior</span>
-            </div>
-            <div class="service-card reveal">
-               <span class="sc-emoji">🕷️</span>
-               <div class="sc-title">Spiders & Wasps</div>
-               <p class="sc-desc">Web removal, nest elimination, and seasonal prevention programs to keep stinging insects away from your family.</p>
-               <span class="sc-tag">Year-Round Protection</span>
-            </div>
-            <div class="service-card reveal">
-               <span class="sc-emoji">🐭</span>
-               <div class="sc-title">Mice & Rats</div>
-               <p class="sc-desc">Comprehensive exclusion work, trapping, and sanitation advice to stop rodents from returning once and for all.</p>
-               <span class="sc-tag">Exclusion Specialists</span>
-            </div>
-            <div class="service-card reveal">
-               <span class="sc-emoji">🦟</span>
-               <div class="sc-title">Mosquitoes & Ticks</div>
-               <p class="sc-desc">Barrier sprays and yard treatment that dramatically reduce tick and mosquito populations around your house.</p>
-               <span class="sc-tag">Outdoor Programs</span>
-            </div>
-            <div class="service-card reveal">
-               <span class="sc-emoji">🪲</span>
-               <div class="sc-title">Bed Bugs</div>
-               <p class="sc-desc">Heat treatment and chemical solutions with thorough follow-up inspections to ensure complete elimination.</p>
-               <span class="sc-tag">Guaranteed Results</span>
-            </div>
-            <div class="service-card reveal">
-               <span class="sc-emoji">🐝</span>
-               <div class="sc-title">Bees & Hornets</div>
-               <p class="sc-desc">Safe removal of hives and nests with humane bee relocation options available to protect local pollinators.</p>
-               <span class="sc-tag">Humane Options</span>
-            </div>
-         </div>
-      </section>
-      <!-- PROCESS -->
-      <section class="process" id="process">
-         <div class="section-header">
-            <div class="section-label">How It Works</div>
-            <h2 class="section-title">Simple. Straightforward. Effective.</h2>
-            <p class="section-sub">Getting your home protected is easy. No confusing contracts, no hidden fees — just clear, honest service.</p>
-         </div>
-         <div class="steps">
-            <div class="step reveal">
-               <div class="step-num">1</div>
-               <h3>Call Us</h3>
-               <p>Reach out and tell us what you're dealing with. We'll schedule at a time that works for you.</p>
-            </div>
-            <div class="step reveal">
-               <div class="step-num">2</div>
-               <h3>Free Inspection</h3>
-               <p>Our technician visits, identifies the issue, and walks you through exactly what we recommend.</p>
-            </div>
-            <div class="step reveal">
-               <div class="step-num">3</div>
-               <h3>Targeted Treatment</h3>
-               <p>We apply the right solution for your specific pest problem — safely and efficiently.</p>
-            </div>
-            <div class="step reveal">
-               <div class="step-num">4</div>
-               <h3>Follow-Up & Peace</h3>
-               <p>We check back in to make sure it worked. If not, we return at no extra cost.</p>
-            </div>
-         </div>
-      </section>
-      <!-- TESTIMONIALS -->
-      <section class="testimonials">
-         <div class="section-header">
-            <div class="section-label">Happy Neighbors</div>
-            <h2 class="section-title">What Our Customers Say</h2>
-            <p class="section-sub">Don't take our word for it — here's what Massachusetts homeowners have to say.</p>
-         </div>
-         <div class="testi-grid">
-            <div class="testi-card reveal">
-               <div class="testi-quote">"</div>
-               <p class="testi-text">Nyx came the same day I called about a mouse problem. They were professional, explained everything clearly, and the problem was gone within a week. Couldn't be happier.</p>
-               <div class="testi-author">
-                  <div class="testi-avatar">S</div>
-                  <div>
-                     <div class="testi-name">Sarah M.</div>
-                     <div class="testi-loc">Newton, MA</div>
-                  </div>
-                  <div class="stars" style="margin-left:auto">★★★★★</div>
-               </div>
-            </div>
-            <div class="testi-card reveal">
-               <div class="testi-quote">"</div>
-               <p class="testi-text">I've tried two other companies before Nyx. These guys actually found where the ants were coming in and fixed it at the source. First time my kitchen has been ant-free in years.</p>
-               <div class="testi-author">
-                  <div class="testi-avatar">R</div>
-                  <div>
-                     <div class="testi-name">Robert K.</div>
-                     <div class="testi-loc">Framingham, MA</div>
-                  </div>
-                  <div class="stars" style="margin-left:auto">★★★★★</div>
-               </div>
-            </div>
-            <div class="testi-card reveal">
-               <div class="testi-quote">"</div>
-               <p class="testi-text">Super friendly team and very thorough. They treated our yard for ticks before summer and we barely saw any this year. Already booked them again for next season.</p>
-               <div class="testi-author">
-                  <div class="testi-avatar">J</div>
-                  <div>
-                     <div class="testi-name">Jennifer L.</div>
-                     <div class="testi-loc">Natick, MA</div>
-                  </div>
-                  <div class="stars" style="margin-left:auto">★★★★★</div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- SERVICE AREA -->
-      <section class="area" id="area">
-         <div class="area-inner">
-            <div>
-               <div class="section-label">Where We Serve</div>
-               <h2 class="section-title">Proudly Serving Greater Massachusetts</h2>
-               <p class="section-sub">We cover a wide area across Eastern and Central Massachusetts. Don't see your town? Give us a call — we may still be able to help.</p>
-               <div class="area-towns">
-                  <span class="town-tag">Boston</span>
-                  <span class="town-tag">Newton</span>
-                  <span class="town-tag">Brookline</span>
-                  <span class="town-tag">Framingham</span>
-                  <span class="town-tag">Natick</span>
-                  <span class="town-tag">Wellesley</span>
-                  <span class="town-tag">Waltham</span>
-                  <span class="town-tag">Needham</span>
-                  <span class="town-tag">Dedham</span>
-                  <span class="town-tag">Milton</span>
-                  <span class="town-tag">Quincy</span>
-                  <span class="town-tag">Canton</span>
-                  <span class="town-tag">Westwood</span>
-                  <span class="town-tag">Sharon</span>
-                  <span class="town-tag">Norwood</span>
-                  <span class="town-tag">Medfield</span>
-               </div>
-            </div>
-            <div class="area-map">
-               <div class="map-title">Massachusetts</div>
-               <svg class="ma-map" viewBox="0 0 38.73 22.26" xmlns="http://www.w3.org/2000/svg">
-                  <path class="highlighted" d="m 14.226419,6.37558 0.04,0.09 0.694,0.707 0.465,-0.108 0.15,-0.135 0.751,0.094 0.369,0.045 1.375,0.559 0.145,0.267 0.067,0.703 0.036,0.7199998 -0.112,0.366001 -0.289,0.5680002 0.64,1.613 0.252,0.235 0.298,0.098 0.802,0.127 0.274,1.798 -2.749,0.843 -0.063,-0.189 -2.406,0.572 -0.397,0.082 -0.315,0.062 -0.415,-1.654 -0.604,0.162 -0.658,-0.139 -0.044,-0.163 0.004,-0.098 0.238,-0.609 -1.175,-1.014 -0.167,-0.663 -0.054,-1.104 0.112,-0.6710012 -0.197,-1.0729998 -0.614,-1.321 3.271,-0.708 0.276,-0.062">
-                     <title>Worcester County</title>
-                  </path>
-                  <path class="highlighted" d="m 20.030419,4.55458 0.358,0.861 0.919,0.617 1.045,0.622 0.748,0.951 -0.054,0.347 -0.216,0.486 -0.37,0.3439998 -0.387,0.247 0.049,1.0140012 -0.455,-0.3560002 -0.027,-0.018 -0.23,-0.022 -0.157,0.022 -0.501,0.3380002 0.118,0.185 0.22,0.288 0.127,0.271 -0.222,0.699 -0.463,0.414 -0.623,0.46 -0.802,-0.127 -0.298,-0.098 -0.252,-0.235 -0.64,-1.613 0.289,-0.5680002 0.112,-0.366 -0.036,-0.7200004 -0.067,-0.703 -0.145,-0.267 -1.375,-0.559 -0.369,-0.045 -0.751,-0.094 -0.15,0.135 -0.465,0.108 -0.694,-0.707 -0.04,-0.09 2.28,-0.51 0.14,-0.031 0.04,-0.009 3.111,-0.717 0.233,-0.554">
-                     <title>Middlesex County</title>
-                  </path>
-                  <path d="m 35.643419,19.603581 0.085,-0.045 0.15,-0.172 0.108,-0.202 0.072,-0.262 -0.044,-0.261 -0.051,-0.09 -0.099,-0.091 -0.091,-0.072 -0.053,-0.045 -0.009,-0.049 0.167,0.036 0.198,0.175 0.856,0.97 0.051,0.18 -0.006,0.135 -0.004,0.027 -0.068,0.09 -0.221,0.167 -0.122,0.054 -0.765,0.176 -0.207,0.04 -0.533,-0.036 -0.906,-0.18 -0.121,-0.054 -0.086,-0.072 -0.05,-0.104 0.14,-0.036 0.122,0.027 0.054,0.018 0.473,-0.018 0.671,-0.175 0.289,-0.131">
-                     <title>Nantucket County</title>
-                  </path>
-                  <path d="m 29.744419,14.321581 0.063,0.067 0.19,0.135 0.274,0.153 0.248,0.1 0.605,0.063 0.363,-0.023 0.965,-0.099 1.303,-0.802 0.482,-0.325 0.316,-0.283 0.097,-0.212 0.02,-0.109 -0.113,-0.374 -0.176,-0.46 -0.081,-0.18 -0.297,-0.423 -0.963,-1.127 -0.15,-0.104 -0.167,-0.063 -0.266,-0.063 -0.067,0.014 -0.126,0.071 -0.069,0.064 -0.054,0.095 -0.031,0.157 0.009,0.068 -0.532,-0.207 -0.031,-0.037 0.036,-0.13 0.095,-0.104 0.162,-0.09 0.157,-0.05 0.278,-0.027 0.447,0.023 0.353,0.077 0.269,0.117 0.312,0.216 0.297,0.297 0.374,0.433 0.298,0.428 0.446,0.771 0.213,0.424 0.306,0.833 0.178,0.618 0.032,0.284 -0.148,1.231 -0.09,0.089 -0.031,-0.856 -0.022,-0.072 -0.046,-0.081 -0.239,-0.113 -0.112,-0.027 -0.068,0.014 -2.867,1.279 -0.121,0.055 -2.088,1.807 -0.333,0.433 -0.351,-0.036 -0.208,-2.51 0.659,-1.429">
-                     <title>Barnstable County (Cape Cod)</title>
-                  </path>
-                  <path class="highlighted" d="m 23.100419,7.60558 0.456,0.181 0.211,1.5139998 -1.645,0.7430012 -0.049,-1.0140012 0.387,-0.247 0.37,-0.3439998 0.216,-0.486 0.054,-0.347">
-                     <title>Suffolk County (Boston)</title>
-                  </path>
-                  <path d="m 21.365419,14.244581 2.407,-2.127 0.725,1.581 0.808,1.47 0.959,0.374 0.428,0.297 1.005,1.547 -0.171,-0.01 -0.428,0.063 -0.175,0.23 -0.105,0.136 -0.017,0.031 0.031,0.419 0.044,0.153 0.145,0.298 -0.829,0.775 -0.785,0.235 -1.288,-2.042 -0.392,-0.365 -1.078,-0.6 -1.284,-2.465">
-                     <title>Bristol County</title>
-                  </path>
-                  <path class="highlighted" d="m 24.665419,9.6205796 0.878,-0.271 0.46,0.067 0.091,0.01 0.076,0.05 0.512,0.342001 1.16,1.2890004 1.68,2.217 0.162,0.37 0.06,0.627 -0.659,1.429 -1.388,1.636 -1.005,-1.547 -0.428,-0.297 -0.959,-0.374 -0.808,-1.47 -0.725,-1.581 0.893,-2.4970014">
-                     <title>Plymouth County</title>
-                  </path>
-                  <path class="highlighted" d="m 23.767419,9.3005796 0.898,0.32 -0.893,2.4970014 -2.407,2.127 -1.182,-0.122 -0.274,-1.798 0.623,-0.46 0.463,-0.414 0.222,-0.699 -0.127,-0.271 -0.22,-0.288 -0.118,-0.185 0.501,-0.3380014 0.157,-0.022 0.23,0.022 0.027,0.018 0.455,0.3560004 1.645,-0.7430014">
-                     <title>Norfolk County</title>
-                  </path>
-                  <path class="highlighted" d="m 23.556419,1.74658 0.067,0.27 0.347,0.829 0.54,1.037 0.559,0.248 -0.901,1.87 -0.612,1.786 -0.456,-0.181 -0.748,-0.951 -1.045,-0.622 -0.919,-0.617 -0.358,-0.861 0.06,-0.136 0.509,-1.022 0.122,-0.127 0.22,-0.189 0.667,-0.568 0.869,-0.645 0.004,0 0.074,-0.031 0.063,-0.032 0.274,-0.018 0.664,-0.04">
-                     <title>Essex County</title>
-                  </path>
-                  <path d="m 12.774419,12.991581 -0.238,0.609 -0.004,0.098 0.044,0.163 0.658,0.139 0.604,-0.162 0.415,1.654 -3.466,0.821 -4.6329998,1.095 -0.415,0.094 -0.352,-0.635 -0.045,-0.117 -0.108,-0.573 0.352,-0.022 -0.028,-1.429 -0.18,-0.775 0.334,-0.505 0.544,-0.09 0.123,0.077 0.252,0.838 -0.144,0.27 0.392,0.199 0.874,0.131 0.925,-0.014 0.77,-0.572 1.6809998,-0.695 1.645,-0.599">
-                     <title>Hampden County</title>
-                  </path>
-                  <path d="m 11.599419,11.977581 1.175,1.014 -1.645,0.599 -1.6809998,0.695 -0.77,0.572 -0.925,0.014 -0.874,-0.131 -0.392,-0.199 0.144,-0.27 -0.252,-0.838 -0.123,-0.077 -0.544,0.09 -0.334,0.505 -0.031,0.108 -0.203,0.009 -0.392,-0.18 -0.212,-0.64 0,-0.113 0.527,-0.009 -0.04,-1.149 -0.063,-0.965 -0.114,-0.184 1.187,0.667 1.571,0.04 1.616,-0.077 0.476,-0.207 1.0959998,-0.099 0.803,0.825">
-                     <title>Hampshire County</title>
-                  </path>
-                  <path d="m 1.6064192,9.0885798 2.235,-0.4829998 1.009,2.223001 0.114,0.184 0.063,0.965 0.04,1.149 -0.527,0.009 0,0.113 0.212,0.64 0.392,0.18 0.203,-0.009 0.031,-0.108 0.18,0.775 0.028,1.429 -0.352,0.022 0.108,0.573 0.045,0.117 0.352,0.635 -4.052,0.857 -0.09,0.022 -0.216,-0.437 0.142,-5.688 0.083,-3.1680012">
-                     <title>Berkshire County</title>
-                  </path>
-                  <path d="m 9.0564192,7.49258 1.6229998,-0.347 0.614,1.321 0.197,1.0729998 -0.112,0.6710012 0.054,1.104 0.167,0.663 -0.803,-0.825 -1.0959998,0.099 -0.476,0.207 -1.616,0.077 -1.571,-0.04 -1.187,-0.667 -1.009,-2.223001 0.857,-0.18 4.358,-0.933">
-                     <title>Franklin County</title>
-                  </path>
-                  <path d="m 30.361419,18.715581 1.529,0.27 0.121,0.293 0.13,0.541 -0.009,0.077 -2.69,0.982 -0.28,-0.238 0.365,-1.145 0.1,-0.167 0.279,-0.343 0.35,-0.382 0.055,0.004 0.05,0.108 m -0.717,-0.419 -0.77,0.974 -0.226,0.256 -0.631,0.496 -0.329,0.104 -0.089,-0.018 0.436,-0.446 0.848,-0.933 0.41,-0.469 0.351,0.036">
-                     <title>Dukes County (Martha's Vineyard)</title>
-                  </path>
-               </svg>
-               <div class="map-label">🔴 Primary service counties &nbsp;·&nbsp; Hover to explore</div>
-            </div>
-         </div>
-         </div>
-      </section>
-      <!-- CTA BANNER -->
-      <section class="cta-banner" id="contact">
-         <h2>Ready for a Pest-Free Home?</h2>
-         <p>Schedule your free inspection today. No pressure, no contracts — just honest help from your local experts.</p>
-         <a href="tel:+15551234567" class="btn-primary">📞 Call (555) 123-4567</a>
-         <p class="cta-contact">Or email us at <a href="mailto:hello@nyxpest.com">hello@nyxpest.com</a> — we respond within a few hours.</p>
-      </section>
-      <!-- FOOTER -->
-      <footer>
-         <div class="footer-grid">
-            <div class="footer-brand">
-               <div class="nav-logo">
-                  <div class="nav-logo-icon">🐜</div>
-                  <span class="nav-logo-text">Nyx <span>Pest Control</span></span>
-               </div>
-               <p class="footer-tagline">Friendly, local pest control for Massachusetts homeowners. Licensed, insured, and committed to your peace of mind.</p>
-            </div>
-            <div class="footer-col">
-               <h4>Services</h4>
-               <a href="#services">Ants & Roaches</a>
-               <a href="#services">Spiders & Wasps</a>
-               <a href="#services">Mice & Rats</a>
-               <a href="#services">Mosquitoes & Ticks</a>
-               <a href="#services">Bed Bugs</a>
-               <a href="#services">Bees & Hornets</a>
-            </div>
-            <div class="footer-col">
-               <h4>Contact</h4>
-               <a href="tel:+15551234567">📞 (555) 123-4567</a>
-               <a href="mailto:hello@nyxpest.com">✉ hello@nyxpest.com</a>
-               <a href="#area">📍 Massachusetts</a>
-               <a href="#contact">Free Inspection</a>
-            </div>
-         </div>
-         <div class="footer-bottom">
-            <span>© 2025 Nyx Pest Control. All rights reserved.</span>
-            <span class="footer-license">MA License #PESTY-MA-2015</span>
-            <span>Privacy Policy · Terms</span>
-         </div>
-      </footer>
-      <script>
-         // Scroll reveal
-         const reveals = document.querySelectorAll('.reveal');
-         const obs = new IntersectionObserver((entries) => {
-           entries.forEach((e, i) => {
-             if (e.isIntersecting) {
-               setTimeout(() => e.target.classList.add('visible'), i * 80);
-               obs.unobserve(e.target);
-             }
-           });
-         }, { threshold: 0.12 });
-         
-         reveals.forEach(el => obs.observe(el));
-      </script>
-   </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyx Pest Control — Massachusetts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --red-soft: #D4574A;
+    --red-light: #F5E6E4;
+    --red-pale: #FDF2F1;
+    --cream: #FAF8F5;
+    --warm-white: #FFFFFF;
+    --charcoal: #2C2C2C;
+    --mid: #5C5C5C;
+    --light: #9A9A9A;
+    --border: #E8E2DA;
+    --shadow: rgba(192, 57, 43, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo-text span { color: var(--red); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: white !important;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--red-soft) !important;
+    transform: translateY(-1px);
+    color: white !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -150px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--red-light) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #F0EDE8 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--red-pale);
+    border: 1px solid var(--red-light);
+    color: var(--red);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero-badge span { font-size: 0.9rem; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(192, 57, 43, 0.28);
+  }
+
+  .btn-primary:hover {
+    background: var(--red-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(192, 57, 43, 0.32);
+  }
+
+  .btn-secondary {
+    color: var(--charcoal);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--red); }
+
+  .btn-secondary .arrow { font-size: 1.2rem; }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--mid);
+  }
+
+  .trust-dot {
+    width: 7px; height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Hero illustration side */
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-card-cluster {
+    position: relative;
+    width: 380px;
+    height: 420px;
+  }
+
+  .hero-main-card {
+    position: absolute;
+    top: 40px; left: 20px;
+    width: 320px;
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.09);
+    border: 1px solid var(--border);
+  }
+
+  .hmc-icon {
+    font-size: 2.4rem;
+    margin-bottom: 14px;
+  }
+
+  .hmc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+
+  .hmc-sub {
+    font-size: 0.82rem;
+    color: var(--light);
+    line-height: 1.5;
+  }
+
+  .hmc-stat {
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .stat-pill {
+    background: var(--red-pale);
+    border: 1px solid var(--red-light);
+    border-radius: 8px;
+    padding: 8px 14px;
+  }
+
+  .stat-pill strong {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .stat-pill span {
+    font-size: 0.72rem;
+    color: var(--mid);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .float-chip {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 10px 16px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .float-chip.chip-1 { top: 0; right: 0; animation-delay: 0s; }
+  .float-chip.chip-2 { bottom: 60px; right: 10px; animation-delay: 1.5s; }
+  .float-chip.chip-3 { bottom: 10px; left: 10px; animation-delay: 0.8s; }
+
+  .chip-dot { width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 90px 5%; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .section-header { margin-bottom: 52px; }
+
+  /* ── WHY US ── */
+  .why {
+    background: white;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+  }
+
+  .why-card {
+    padding: 28px 24px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .why-card:hover {
+    box-shadow: 0 8px 32px var(--shadow);
+    transform: translateY(-3px);
+  }
+
+  .why-icon {
+    width: 44px; height: 44px;
+    background: var(--red-pale);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+
+  .why-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .why-card p {
+    font-size: 0.875rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-card:hover {
+    box-shadow: 0 12px 40px var(--shadow);
+    transform: translateY(-4px);
+  }
+
+  .sc-emoji { font-size: 2rem; margin-bottom: 16px; display: block; }
+
+  .sc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .sc-desc {
+    font-size: 0.875rem;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+
+  .sc-tag {
+    display: inline-block;
+    background: var(--red-pale);
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--red-light);
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--charcoal); color: white; }
+
+  .process .section-label { color: var(--red-soft); }
+
+  .process .section-title { color: white; }
+
+  .process .section-sub { color: #AAA; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 80px; right: 80px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    position: relative;
+  }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    font-size: 0.83rem;
+    color: #999;
+    line-height: 1.6;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: white; border-top: 1px solid var(--border); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .testi-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .testi-quote {
+    font-size: 2.5rem;
+    color: var(--red-light);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .testi-text {
+    font-size: 0.9rem;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testi-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .testi-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--charcoal);
+  }
+
+  .testi-loc {
+    font-size: 0.78rem;
+    color: var(--light);
+  }
+
+  .stars { color: #F59E0B; font-size: 0.85rem; letter-spacing: 1px; }
+
+ /* ── SERVICE AREA ── */
+.area { background: var(--red-pale); border-top: 1px solid var(--red-light); border-bottom: 1px solid var(--red-light); }
+
+.area-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.area-towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.town-tag {
+  background: white;
+  border: 1px solid var(--red-light);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.town-tag:hover {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+  cursor: default;
+}
+
+.area-map {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 24px 28px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+}
+
+.ma-map {
+  width: 100%;
+  height: auto;
+}
+
+.ma-map path {
+  fill: var(--red-light);
+  stroke: white;
+  stroke-width: 0.15;
+  transition: fill 0.2s;
+  cursor: pointer;
+}
+
+.ma-map path:hover { fill: var(--red-soft); }
+.ma-map path.highlighted { fill: var(--red); }
+
+.map-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.map-label {
+  font-size: 0.76rem;
+  color: var(--light);
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--charcoal) 0%, #3D2C2C 100%);
+    padding: 80px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(192,57,43,0.25) 0%, transparent 70%);
+  }
+
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-banner p {
+    color: #AAA;
+    font-size: 1rem;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-banner .btn-primary {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    padding: 16px 36px;
+  }
+
+  .cta-contact {
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
+    color: #888;
+    font-size: 0.875rem;
+  }
+
+  .cta-contact a {
+    color: var(--red-soft);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1E1E1E;
+    padding: 50px 5% 30px;
+    color: #888;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand .nav-logo-text { color: white; }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 12px;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #AAA;
+    margin-bottom: 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--red-soft); }
+
+  .footer-bottom {
+    border-top: 1px solid #2E2E2E;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #555;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-license { color: var(--red-soft); font-weight: 600; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Scroll animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-sub { margin: 0 auto 36px; }
+    .hero-actions { justify-content: center; }
+    .hero-trust { justify-content: center; }
+    .hero-visual { display: none; }
+
+    .area-inner { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    section { padding: 64px 5%; }
+    .steps::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🐜</div>
+    <span class="nav-logo-text">Nyx <span>Pest Control</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#area">Service Area</a></li>
+    <li><a href="#contact" class="nav-cta">Free Inspection</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge"><span>📍</span> Serving Massachusetts</div>
+    <h1>Stop <em>Overpaying</em><br>for Pest Control.</h1>
+    <p class="hero-sub">Most companies sell packages. We don’t.<br>Get targeted treatment based on your<br> actual issue— at a better price.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Free Inspection</a>
+      <a href="tel:+15551234567" class="btn-secondary">📞 Call Us Today <span class="arrow">→</span></a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div class="trust-dot"></div> Experienced Local Technicians</div>
+      <div class="trust-item"><div class="trust-dot"></div> 100% Satisfaction Guarantee</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-cluster">
+      <div class="hero-main-card">
+        <div class="hmc-icon">🏘️</div>
+        <div class="hmc-title">Locally Owned & Operated</div>
+        <div class="hmc-sub">No corporate markup—just fair, competitive rates.</div>
+        <div class="hmc-stat">
+          <div class="stat-pill">
+            <strong>$0</strong>
+            <span>Hidden Fees</span>	
+          </div>
+          <div class="stat-pill">
+            <strong>$0</strong>
+            <span>Contracts</span>
+          </div>
+        </div>
+      </div>
+      <div class="float-chip chip-1">💵 Pay Only for What You Need</div>
+      <div class="float-chip chip-2">🎯 Targeted Treatments</div>
+      <div class="float-chip chip-3">📝 No Contracts</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-header">
+    <div class="section-label">Why Choose Nyx</div>
+    <h2 class="section-title">Small Company, Big Commitment</h2>
+    <p class="section-sub">We're your neighbors, not a national franchise. When you call us, you talk to a real person who knows Massachusetts pest behaviors.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">🏠</div>
+      <h3>Locally Owned</h3>
+      <p>We keep prices competitive by staying local and efficient. You pay for what’s needed—not what companies try to sell you.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">⚡</div>
+      <h3>Fast Response</h3>
+      <p>We know pest problems can't wait. Same-day and next-day appointments available across our service area.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🌿</div>
+      <h3>Family-Safe Treatments</h3>
+      <p>We use EPA-approved, targeted treatments that are tough on pests but safe for your family and pets.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">✅</div>
+      <h3>Guaranteed Results</h3>
+      <p>Not satisfied? We come back at no charge. Your peace of mind matters more than a quick job.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="section-label">What We Treat</div>
+    <h2 class="section-title">Comprehensive Pest Solutions</h2>
+    <p class="section-sub">From ants in your kitchen to mice in your walls — we've got you covered with targeted, proven treatments.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <span class="sc-emoji">🐜</span>
+      <div class="sc-title">Ants & Roaches</div>
+      <p class="sc-desc">Targeted baiting and barrier treatments that eliminate colonies at the source — not just the surface.</p>
+      <span class="sc-tag">Interior & Exterior</span>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="sc-emoji">🕷️</span>
+      <div class="sc-title">Spiders & Wasps</div>
+      <p class="sc-desc">Web removal, nest elimination, and seasonal prevention programs to keep stinging insects away from your family.</p>
+      <span class="sc-tag">Year-Round Protection</span>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="sc-emoji">🐭</span>
+      <div class="sc-title">Mice & Rats</div>
+      <p class="sc-desc">Comprehensive exclusion work, trapping, and sanitation advice to stop rodents from returning once and for all.</p>
+      <span class="sc-tag">Exclusion Specialists</span>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="sc-emoji">🦟</span>
+      <div class="sc-title">Mosquitoes & Ticks</div>
+      <p class="sc-desc">Barrier sprays and yard treatment that dramatically reduce tick and mosquito populations around your house.</p>
+      <span class="sc-tag">Outdoor Programs</span>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="sc-emoji">🪲</span>
+      <div class="sc-title">Bed Bugs</div>
+      <p class="sc-desc">Heat treatment and chemical solutions with thorough follow-up inspections to ensure complete elimination.</p>
+      <span class="sc-tag">Guaranteed Results</span>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="sc-emoji">🐝</span>
+      <div class="sc-title">Bees & Hornets</div>
+      <p class="sc-desc">Safe removal of hives and nests to eliminate active infestations and reduce risk around your property.</p>
+      <span class="sc-tag">Complete Elimination</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Simple. Straightforward. Effective.</h2>
+    <p class="section-sub">Getting your home protected is easy. No confusing contracts, no hidden fees — just clear, honest service.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h3>Call Us</h3>
+      <p>Reach out and tell us what you're dealing with. We'll schedule at a time that works for you.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h3>Free Inspection</h3>
+      <p>Our technician visits, identifies the issue, and walks you through exactly what we recommend.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h3>Targeted Treatment</h3>
+      <p>We apply the right solution for your specific pest problem — safely and efficiently.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <h3>Follow-Up & Peace</h3>
+      <p>We check back in to make sure it worked. If not, we return at no extra cost.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header">
+    <div class="section-label">Happy Neighbors</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-sub">Don't take our word for it — here's what Massachusetts homeowners have to say.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Nyx came the same day I called about a mouse problem. They were professional, explained everything clearly, and the problem was gone within a week. Couldn't be happier.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Sarah M.</div>
+          <div class="testi-loc">Newton, MA</div>
+        </div>
+        <div class="stars" style="margin-left:auto">★★★★★</div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">I've tried two other companies before Nyx. These guys actually found where the ants were coming in and fixed it at the source. First time my kitchen has been ant-free in years.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div>
+          <div class="testi-name">Robert K.</div>
+          <div class="testi-loc">Framingham, MA</div>
+        </div>
+        <div class="stars" style="margin-left:auto">★★★★★</div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Super friendly team and very thorough. They treated our yard for ticks before summer and we barely saw any this year. Already booked them again for next season.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <div>
+          <div class="testi-name">Jennifer L.</div>
+          <div class="testi-loc">Natick, MA</div>
+        </div>
+        <div class="stars" style="margin-left:auto">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="area" id="area">
+  <div class="area-inner">
+    <div>
+      <div class="section-label">Where We Serve</div>
+      <h2 class="section-title">Proudly Serving Greater Massachusetts</h2>
+      <p class="section-sub">We cover a wide area across Eastern and Central Massachusetts. Don't see your town? Give us a call — we may still be able to help.</p>
+      <div class="area-towns">
+        <span class="town-tag">Boston</span>
+        <span class="town-tag">Newton</span>
+        <span class="town-tag">Brookline</span>
+        <span class="town-tag">Framingham</span>
+        <span class="town-tag">Natick</span>
+        <span class="town-tag">Wellesley</span>
+        <span class="town-tag">Waltham</span>
+        <span class="town-tag">Needham</span>
+        <span class="town-tag">Dedham</span>
+        <span class="town-tag">Milton</span>
+        <span class="town-tag">Quincy</span>
+        <span class="town-tag">Canton</span>
+        <span class="town-tag">Westwood</span>
+        <span class="town-tag">Sharon</span>
+        <span class="town-tag">Norwood</span>
+        <span class="town-tag">Medfield</span>
+      </div>
+    </div>
+     <div class="area-map">
+      <div class="map-title">Massachusetts</div>
+      <svg class="ma-map" viewBox="0 0 38.73 22.26" xmlns="http://www.w3.org/2000/svg">
+        <path class="highlighted" d="m 14.226419,6.37558 0.04,0.09 0.694,0.707 0.465,-0.108 0.15,-0.135 0.751,0.094 0.369,0.045 1.375,0.559 0.145,0.267 0.067,0.703 0.036,0.7199998 -0.112,0.366001 -0.289,0.5680002 0.64,1.613 0.252,0.235 0.298,0.098 0.802,0.127 0.274,1.798 -2.749,0.843 -0.063,-0.189 -2.406,0.572 -0.397,0.082 -0.315,0.062 -0.415,-1.654 -0.604,0.162 -0.658,-0.139 -0.044,-0.163 0.004,-0.098 0.238,-0.609 -1.175,-1.014 -0.167,-0.663 -0.054,-1.104 0.112,-0.6710012 -0.197,-1.0729998 -0.614,-1.321 3.271,-0.708 0.276,-0.062"><title>Worcester County</title></path>
+        <path class="highlighted" d="m 20.030419,4.55458 0.358,0.861 0.919,0.617 1.045,0.622 0.748,0.951 -0.054,0.347 -0.216,0.486 -0.37,0.3439998 -0.387,0.247 0.049,1.0140012 -0.455,-0.3560002 -0.027,-0.018 -0.23,-0.022 -0.157,0.022 -0.501,0.3380002 0.118,0.185 0.22,0.288 0.127,0.271 -0.222,0.699 -0.463,0.414 -0.623,0.46 -0.802,-0.127 -0.298,-0.098 -0.252,-0.235 -0.64,-1.613 0.289,-0.5680002 0.112,-0.366 -0.036,-0.7200004 -0.067,-0.703 -0.145,-0.267 -1.375,-0.559 -0.369,-0.045 -0.751,-0.094 -0.15,0.135 -0.465,0.108 -0.694,-0.707 -0.04,-0.09 2.28,-0.51 0.14,-0.031 0.04,-0.009 3.111,-0.717 0.233,-0.554"><title>Middlesex County</title></path>
+        <path d="m 35.643419,19.603581 0.085,-0.045 0.15,-0.172 0.108,-0.202 0.072,-0.262 -0.044,-0.261 -0.051,-0.09 -0.099,-0.091 -0.091,-0.072 -0.053,-0.045 -0.009,-0.049 0.167,0.036 0.198,0.175 0.856,0.97 0.051,0.18 -0.006,0.135 -0.004,0.027 -0.068,0.09 -0.221,0.167 -0.122,0.054 -0.765,0.176 -0.207,0.04 -0.533,-0.036 -0.906,-0.18 -0.121,-0.054 -0.086,-0.072 -0.05,-0.104 0.14,-0.036 0.122,0.027 0.054,0.018 0.473,-0.018 0.671,-0.175 0.289,-0.131"><title>Nantucket County</title></path>
+        <path d="m 29.744419,14.321581 0.063,0.067 0.19,0.135 0.274,0.153 0.248,0.1 0.605,0.063 0.363,-0.023 0.965,-0.099 1.303,-0.802 0.482,-0.325 0.316,-0.283 0.097,-0.212 0.02,-0.109 -0.113,-0.374 -0.176,-0.46 -0.081,-0.18 -0.297,-0.423 -0.963,-1.127 -0.15,-0.104 -0.167,-0.063 -0.266,-0.063 -0.067,0.014 -0.126,0.071 -0.069,0.064 -0.054,0.095 -0.031,0.157 0.009,0.068 -0.532,-0.207 -0.031,-0.037 0.036,-0.13 0.095,-0.104 0.162,-0.09 0.157,-0.05 0.278,-0.027 0.447,0.023 0.353,0.077 0.269,0.117 0.312,0.216 0.297,0.297 0.374,0.433 0.298,0.428 0.446,0.771 0.213,0.424 0.306,0.833 0.178,0.618 0.032,0.284 -0.148,1.231 -0.09,0.089 -0.031,-0.856 -0.022,-0.072 -0.046,-0.081 -0.239,-0.113 -0.112,-0.027 -0.068,0.014 -2.867,1.279 -0.121,0.055 -2.088,1.807 -0.333,0.433 -0.351,-0.036 -0.208,-2.51 0.659,-1.429"><title>Barnstable County (Cape Cod)</title></path>
+        <path class="highlighted" d="m 23.100419,7.60558 0.456,0.181 0.211,1.5139998 -1.645,0.7430012 -0.049,-1.0140012 0.387,-0.247 0.37,-0.3439998 0.216,-0.486 0.054,-0.347"><title>Suffolk County (Boston)</title></path>
+        <path d="m 21.365419,14.244581 2.407,-2.127 0.725,1.581 0.808,1.47 0.959,0.374 0.428,0.297 1.005,1.547 -0.171,-0.01 -0.428,0.063 -0.175,0.23 -0.105,0.136 -0.017,0.031 0.031,0.419 0.044,0.153 0.145,0.298 -0.829,0.775 -0.785,0.235 -1.288,-2.042 -0.392,-0.365 -1.078,-0.6 -1.284,-2.465"><title>Bristol County</title></path>
+        <path class="highlighted" d="m 24.665419,9.6205796 0.878,-0.271 0.46,0.067 0.091,0.01 0.076,0.05 0.512,0.342001 1.16,1.2890004 1.68,2.217 0.162,0.37 0.06,0.627 -0.659,1.429 -1.388,1.636 -1.005,-1.547 -0.428,-0.297 -0.959,-0.374 -0.808,-1.47 -0.725,-1.581 0.893,-2.4970014"><title>Plymouth County</title></path>
+        <path class="highlighted" d="m 23.767419,9.3005796 0.898,0.32 -0.893,2.4970014 -2.407,2.127 -1.182,-0.122 -0.274,-1.798 0.623,-0.46 0.463,-0.414 0.222,-0.699 -0.127,-0.271 -0.22,-0.288 -0.118,-0.185 0.501,-0.3380014 0.157,-0.022 0.23,0.022 0.027,0.018 0.455,0.3560004 1.645,-0.7430014"><title>Norfolk County</title></path>
+        <path class="highlighted" d="m 23.556419,1.74658 0.067,0.27 0.347,0.829 0.54,1.037 0.559,0.248 -0.901,1.87 -0.612,1.786 -0.456,-0.181 -0.748,-0.951 -1.045,-0.622 -0.919,-0.617 -0.358,-0.861 0.06,-0.136 0.509,-1.022 0.122,-0.127 0.22,-0.189 0.667,-0.568 0.869,-0.645 0.004,0 0.074,-0.031 0.063,-0.032 0.274,-0.018 0.664,-0.04"><title>Essex County</title></path>
+        <path d="m 12.774419,12.991581 -0.238,0.609 -0.004,0.098 0.044,0.163 0.658,0.139 0.604,-0.162 0.415,1.654 -3.466,0.821 -4.6329998,1.095 -0.415,0.094 -0.352,-0.635 -0.045,-0.117 -0.108,-0.573 0.352,-0.022 -0.028,-1.429 -0.18,-0.775 0.334,-0.505 0.544,-0.09 0.123,0.077 0.252,0.838 -0.144,0.27 0.392,0.199 0.874,0.131 0.925,-0.014 0.77,-0.572 1.6809998,-0.695 1.645,-0.599"><title>Hampden County</title></path>
+        <path d="m 11.599419,11.977581 1.175,1.014 -1.645,0.599 -1.6809998,0.695 -0.77,0.572 -0.925,0.014 -0.874,-0.131 -0.392,-0.199 0.144,-0.27 -0.252,-0.838 -0.123,-0.077 -0.544,0.09 -0.334,0.505 -0.031,0.108 -0.203,0.009 -0.392,-0.18 -0.212,-0.64 0,-0.113 0.527,-0.009 -0.04,-1.149 -0.063,-0.965 -0.114,-0.184 1.187,0.667 1.571,0.04 1.616,-0.077 0.476,-0.207 1.0959998,-0.099 0.803,0.825"><title>Hampshire County</title></path>
+        <path d="m 1.6064192,9.0885798 2.235,-0.4829998 1.009,2.223001 0.114,0.184 0.063,0.965 0.04,1.149 -0.527,0.009 0,0.113 0.212,0.64 0.392,0.18 0.203,-0.009 0.031,-0.108 0.18,0.775 0.028,1.429 -0.352,0.022 0.108,0.573 0.045,0.117 0.352,0.635 -4.052,0.857 -0.09,0.022 -0.216,-0.437 0.142,-5.688 0.083,-3.1680012"><title>Berkshire County</title></path>
+        <path d="m 9.0564192,7.49258 1.6229998,-0.347 0.614,1.321 0.197,1.0729998 -0.112,0.6710012 0.054,1.104 0.167,0.663 -0.803,-0.825 -1.0959998,0.099 -0.476,0.207 -1.616,0.077 -1.571,-0.04 -1.187,-0.667 -1.009,-2.223001 0.857,-0.18 4.358,-0.933"><title>Franklin County</title></path>
+        <path d="m 30.361419,18.715581 1.529,0.27 0.121,0.293 0.13,0.541 -0.009,0.077 -2.69,0.982 -0.28,-0.238 0.365,-1.145 0.1,-0.167 0.279,-0.343 0.35,-0.382 0.055,0.004 0.05,0.108 m -0.717,-0.419 -0.77,0.974 -0.226,0.256 -0.631,0.496 -0.329,0.104 -0.089,-0.018 0.436,-0.446 0.848,-0.933 0.41,-0.469 0.351,0.036"><title>Dukes County (Martha's Vineyard)</title></path>
+      </svg>
+      <div class="map-label">🔴 Primary service</div>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="contact">
+  <h2>Ready for a Pest-Free Home?</h2>
+  <p>Schedule your free inspection today. No pressure, no contracts — just honest help from your local experts.</p>
+  <a href="tel:+15551234567" class="btn-primary">📞 Call (555) 123-4567</a>
+  <p class="cta-contact">Or email us at <a href="mailto:hello@nyxpest.com">hello@nyxpest.com</a> — we respond within a few hours.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">🐜</div>
+        <span class="nav-logo-text">Nyx <span>Pest Control</span></span>
+      </div>
+      <p class="footer-tagline">Friendly, local pest control for Massachusetts homeowners. Licensed, insured, and committed to your peace of mind.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Ants & Roaches</a>
+      <a href="#services">Spiders & Wasps</a>
+      <a href="#services">Mice & Rats</a>
+      <a href="#services">Mosquitoes & Ticks</a>
+      <a href="#services">Bed Bugs</a>
+      <a href="#services">Bees & Hornets</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+15551234567">📞 (555) 123-4567</a>
+      <a href="mailto:@nyxpest.com">✉ hello@nyxpest.com</a>
+      <a href="#area">📍 Massachusetts</a>
+      <a href="#contact">Free Inspection</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Nyx Pest Control. All rights reserved.</span>
+    <span class="footer-license">MA License #PESTY-MA-2015</span>
+    <span>Privacy Policy · Terms</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => obs.observe(el));
+</script>
+
+
+
+</body>
 </html>
